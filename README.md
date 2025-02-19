@@ -16,3 +16,22 @@ aireplay-ng --deauth 4(숫자만큼 연결해제 패킷을 보내기에 아주 �
 deauth 공격 직후 airodump-ng 창을 상단을 보면 전에 없던 wpa handshake 문구와 옆에 맥주소가 있다.
 aireplay-ng는 무선네트워크 공격 도구로 패킷 인젝션을 주로 수행, deauth(강제 연결해제, -0), fake auth(가짜 인증, -1), arp replay(wep의 초기화백터를 수집, 암호화 키 크랙, -3) 등이 있다.
 aireplay-ng는 무선 네트워크 어뎁터가 모니터 모드로 설정되어 있어야 한다.
+
+handshake 패킷은 wpa키를 확보, 계산하는데 도움이 되진 않는다.
+단지 비밀번호가 유효한가 아닌가 판단.
+
+때문에 정확하지 않지만 추측 등을 통해 대량의 비밀번호를 만들어야한다. 이를 위해 사전파일 작업을 해야한다.
+사전 파일은 대량의 텍스트 파일로 대량의 비밀번호를 담는다.
+사전파일을 핸드셰이크 정보와 함께 이용해서 유효한 비밀번호를 찾아냄.
+사전파일을 만드는 법
+crunch라는 도구를 이용.
+curnch[min, 최소글자수][max][characters]-t[paatern]-o[FileName]
+ex)curnch 6 8 123abc$ -o wordlist -t a@@@@b
+pattern은 위 예시처럼 a-b사이 4자리의 대량의 비밀번호를 만들어냄
+ex) a1234b, accccb, a$dddb, accccccb(제시를 최대 8자리기에 가능)	 
+man crunch라고 입력시 crunch라고 입력시 이용할 수 있는 다양한 정보가 나온다.
+q를 누르면 빠져나올 수 있다.
+crunch -p(p옵션은 중복되는 글자가 없게함.) 
+curnch 6 8 abc12 -o test.txt 
+이렇게 커맨드 입력시 test 파일에 패스워드들이 저장되는데 보고 싶으면 cat test.txt를 누르면 화면에 표시함.
+
