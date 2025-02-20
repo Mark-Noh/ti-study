@@ -1,4 +1,4 @@
-# ti-study
+ # ti-study
 주변 무선네트워크 확인하는 법
 airodump-ng mon0
 프로그램 종료는 Control+C
@@ -73,7 +73,9 @@ aireplay-ng fakeauth
 
 
 25. 2. 18.
-airodump-ng 말고 wps 기능 활성화 하에서는 다른 방법으로 네트워크르 확인해야 한다.
+wpa, wpa2 하에서 해킹
+pin번호를 입력하는 wps 방식의 기능을 활성화 해둔 경우.
+airodump-ng 말고 wps 기능 활성화 하에서는 다른 방법으로 네트워크를 확인해야 한다.
 wash라는 도구를 이용
 wash --interface mon0(모니터모드가 활성된 장비)
 누르면 네트워크 목록이 나온다.
