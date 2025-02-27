@@ -1,4 +1,12 @@
  # ti-study
+
+무선어뎁터 구매시 vmware에 칼리 셋팅에 들어가서 usb3.1모드와 input 관련 맨위 박스를 체크
+그리리고 터미네이터에서 iwconfig에서 모드 상태가 모니터인지 메니저인지 확인 후 
+ifconfig wlan0 down 으로 매니저모드를 꺼주고
+airmon-ng check kill 을 커맨드해서 불필요한 기능도 꺼준다.
+
+
+ 
 주변 무선네트워크 확인하는 법
 airodump-ng mon0
 프로그램 종료는 Control+C
