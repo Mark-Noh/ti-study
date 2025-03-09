@@ -221,4 +221,41 @@ session hijacking 쿠키를 탈취하여 시스템을 가로채는 공격
  
 58.타이포스쿼팅(Typosquatting) 공격은 언제 수행됩니까?
 typo-squatting은 사용자가 url을 잘못 입력하면 가짜 사이트로 유도하는 공격	
-60.	해커가 다크웹에서 690GB 크기의 레인보우 테이블(rainbow table)을 입수했습니다. 그는 이 테이블을 이용하여 무엇을 하려고 하며, 레인보우 테이블은 무엇으로 구성되어 있습니까?
+ 
+59.해커가 다크웹에서 690GB 크기의 레인보우 테이블(rainbow table)을 입수했습니다. 그는 이 테이블을 이용하여 무엇을 하려고 하며, 레인보우 테이블은 무엇으로 구성되어 있습니까?
+
+inadvertently 실수로, 부주의로
+proprietary 상용,전용의
+exploits 취약점 
+fraudulent 사기의
+transactions 금융거래
+salting 암호 해시에서 무작위 데이터 추가해서 보안을 높이는 기법
+legitimate 합법적인
+threads 프로세스
+arithmetic 산술
+validation 유효성검사, 검증과정
+mitigated 완화된, 경감된
+sign the key 키서명(공개키 암호에서 신원을 확인하고 키에 서명하는 행위)
+suits
+stuxnet 스턱스넷, 악성코드의 이름
+pen tester 침투테스터
+router 경로
+ssl secure sockets layer 웹상 데이터 암호화하는 프로토콜
+sophistication 정교함, 고도화된 기술력
+advanced persistent threat(apt) 지능적 지속 위협
+bandwidth 대역폭
+insecure 안전하지 않은
+pofts
+intelligence
+faraday cage 전자파 차단 장지(신호 차단 위해 사용)
+default configuration  기본설정
+intrusive
+nfc(near field communication)
+=근거리 무선통신, 결제에 사용
+
+false positive 오탐지
+non credentialed 취약점스캔(패치 누락부분만 가능)
+credentialed(파일 감사 및 계정 취약점 확인가능)
+authority, urgency
+
+
