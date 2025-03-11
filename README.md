@@ -5,3 +5,22 @@
 이후 대상 클라이언트에 cmd에서 arp-a를 커맨드하면 xx.xx.xx.1 의 맥주소가 내 eth0 맥주소로 변경되어 있음.
 xx.xx.xx.1.은 대게 클라이언트가 서버에 접속하기 위해 라우터와 연결하는 포트임.
 xarp를 설치, 실행하며면 맥주소가 임의로 변경됨을 나타냄. 
+
+wireshark로 의심스러운 해킹을 찾는 방법.
+wiresharks의 configuration profiles를 들어간다.
+preferences 창 좌측에  protocols의 arp를 들어간다.
+해당 창에 detect arp request storms 박스를 클릭
+해당 네트워크 내 모든 기기를 검색하려하면 경보를 알려준다.
+
+arp 검색을 가정해서
+칼리 터미네이터에 netdiscover를 커맨드
+netdiscover -i eth0(인터페이스) -r 10.20.14.1/24(범위, 네트워크내 모든 기기 확인은 ip 마지막에 1/24로 설정)
+
+그러고 난 뒤 wireshark에 상단 analyze 창의 expert information에 들어가면 arp패킷 폭주를 확인할 수 있다.
+다른 방법은 윈도우 CMD에서 arp -a를 커맨드 후 type에 dynamic 된 부분으 static으로 바꾸면 arp스푸핑이 되지 않기에 방지 가능
+다만 해당 부분을 수동으로 일일이 해줘야 해서 번거로움이 많다.
+
+이를 위해 HTTPS everwhere이라는 플러그인을 설치.
+https가 있는 사이트를 http로 다운그래이드시 자동으로 hsts 기능으로 https로 연결시킴.
+하지만 여전히 bettercap 등을 사용하면 id, pw 같은 상세 패킷은 확인 되지 않아도 해당 ip 클라이언트가 어떤 사이트로 이동하는 지 정보는 확인됨.
+
