@@ -105,7 +105,8 @@ wps pin에 나오는 값이 pin 값이다.
 wpa psk에 나오는 값이 wpa의 키 값이다.
 ap ssid에 나오는 것이 라우터 이름이다.
 
+zenmap으로 서버 대상 해킹이 가능하다.
+metasploitable에서 ping을 보내 응답을 받아낸 것처럼 웹사이트의 ip 또한 같은 방식으로 얻을 수 있다.
+metasploitable에서 특정 웹사이트 대상으로 ping facebookc.om 이런 식으로 커맨드 입력
+그러면 해당 ip를 응답해주고 응답 받은 ip로 zenmap을 실행하면 facebook에서 실행 중인 모든 서비스 목록을 얻을 수 있음.
 
-
-
-.
